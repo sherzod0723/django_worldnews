@@ -2,7 +2,9 @@
 {% load static %}
 <html lang="en">
 <head>
-	<title>Home 02</title>
+	{% block title %}
+
+	{% endblock %}
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -189,7 +191,7 @@
 
 				<ul class="main-menu-m">
 					<li>
-						<a href="index.html">Home</a>
+						<a href="{% url 'home_page_dirs' %}">Home</a>
 						<ul class="sub-menu-m">
 							<li><a href="index.html">Homepage v1</a></li>
 							<li><a href="home-02.html">Homepage v2</a></li>
@@ -250,7 +252,7 @@
 			<div class="wrap-logo no-banner container">
 				<!-- Logo desktop -->
 				<div class="logo">
-					<a href="index.html"><img src="{% static 'front/images/icons/logo-01.png' %}" alt="LOGO"></a>
+					<a href="index.html"><img src="{% static 'front/images/icons/logo-01.png' %}" alt="LOGO" width="210px" height="140px" ></a>
 				</div>
 			</div>
 
@@ -265,12 +267,8 @@
 
 						<ul class="main-menu justify-content-center">
 							<li class="main-menu-active">
-								<a href="index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Homepage v1</a></li>
-									<li><a href="home-02.html">Homepage v2</a></li>
-									<li><a href="home-03.html">Homepage v3</a></li>
-								</ul>
+								<a href="{% url 'home_page_dirs' %}">Home</a>
+
 							</li>
 
 							<li class="mega-menu-item">
@@ -2294,7 +2292,8 @@
 			</div>
 		</div>
 	</header>
-
+	{% block content %}
+	{% endblock %}
 	<!-- Footer -->
 	<footer>
 		<div class="bg2 p-t-40 p-b-25">

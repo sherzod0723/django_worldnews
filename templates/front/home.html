@@ -1,63 +1,34 @@
 {% extends 'front/base.html' %}
+{% load static %}
+{% block title %}
+	<title>Title | Home</title>
+
+{% endblock %}
 
 {% block content %}
-
 	<!-- Feature post -->
 	<section class="bg0">
 			<div class="row m-rl-0 justify-content-center">
+			{% for i in post_title %}
+
 				<div class="col-md-4 p-rl-1 p-b-2">
-					<div class="bg-img1 size-a-11 how1 pos-relative" style="background-image: url(images/post-01.jpg);">
-						<a href="blog-detail-02.html" class="dis-block how1-child1 trans-03"></a>
+					<div class="bg-img1 size-a-11 how1 pos-relative" style="background-image: url({{ i.photo.url }});">
+						<a href="{% url 'news_header_detail_page_dirs' id=i.id %}" class="dis-block how1-child1 trans-03"></a>
 
 						<div class="flex-col-e-s s-full p-rl-25 p-tb-18">
-							<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-								Technology
+							<a href="{% url 'news_header_detail_page_dirs' id=i.id %}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+								{{ i.category }}
 							</a>
 
 							<h3 class="how1-child2 m-t-14 m-b-10">
-								<a href="blog-detail-02.html" class="f1-l-1 cl0 hov-cl10 trans-03 respon1">
-									Microsoft quisque at ipsum vel orci eleifend ultrices
+								<a href="{% url 'news_header_detail_page_dirs' id=i.id %}" class="f1-l-1 cl0 hov-cl10 trans-03 respon1">
+									{{ i.title }}
 								</a>
 							</h3>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-md-4 p-rl-1 p-b-2">
-					<div class="bg-img1 size-a-11 how1 pos-relative" style="background-image: url(images/post-19.jpg);">
-						<a href="blog-detail-02.html" class="dis-block how1-child1 trans-03"></a>
-
-						<div class="flex-col-e-s s-full p-rl-25 p-tb-18">
-							<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-								Technology
-							</a>
-
-							<h3 class="how1-child2 m-t-14 m-b-10">
-								<a href="blog-detail-02.html" class="f1-l-1 cl0 hov-cl10 trans-03 respon1">
-									London ipsum dolor sit amet, consectetur adipiscing elit.
-								</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 p-rl-1 p-b-2">
-					<div class="bg-img1 size-a-11 how1 pos-relative" style="background-image: url(images/post-20.jpg);">
-						<a href="blog-detail-02.html" class="dis-block how1-child1 trans-03"></a>
-
-						<div class="flex-col-e-s s-full p-rl-25 p-tb-18">
-							<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
-								Life Style
-							</a>
-
-							<h3 class="how1-child2 m-t-14 m-b-10">
-								<a href="blog-detail-02.html" class="f1-l-1 cl0 hov-cl10 trans-03 respon1">
-									Pellentesque dui nibh, pellentesque ut dapibus ut
-								</a>
-							</h3>
-						</div>
-					</div>
-				</div>
+			{% endfor %}
 			</div>
 	</section>
 
@@ -80,19 +51,19 @@
 									<!-- Item post -->
 									<div class="m-b-30">
 										<a href="blog-detail-02.html" class="wrap-pic-w hov1 trans-03">
-											<img src="{% static 'front/images/post-21.jpg' %}" alt="IMG">
+											<img src="{{ entertainment.0.photo.url }}" alt="IMG">
 										</a>
 
 										<div class="p-t-25">
 											<h5 class="p-b-5">
 												<a href="blog-detail-02.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-													American live music lorem ipsum dolor sit amet consectetur
+													{{ entertainment.0.title }}
 												</a>
 											</h5>
 
 											<span class="cl8">
 												<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-													Music
+													{{ entertainment.0.inline_category }}
 												</a>
 
 												<span class="f1-s-3 m-rl-3">
@@ -100,12 +71,12 @@
 												</span>
 
 												<span class="f1-s-3">
-													Feb 18
+													{{ entertainment.0.created_at }}
 												</span>
 											</span>
 
 											<p class="f1-s-1 cl6 p-t-18">
-												Duis eu felis id tortor congue consequat. Sed vitae vestibulum enim, et pharetra magna
+												{{ entertainment.0.description }}
 											</p>
 										</div>
 									</div>
@@ -115,19 +86,19 @@
 									<!-- Item post -->
 									<div class="m-b-30">
 										<a href="blog-detail-02.html" class="wrap-pic-w hov1 trans-03">
-											<img src="{% static 'front/images/post-22.jpg' %}" alt="IMG">
+											<img src="{{ entertainment.1.photo.url }}" alt="IMG">
 										</a>
 
 										<div class="p-t-10">
 											<h5 class="p-b-5">
 												<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-													Donec metus orci, malesuada et lectus vitae
+													{{ entertainment.1.title }}
 												</a>
 											</h5>
 
 											<span class="cl8">
 												<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-													Music
+													{{ entertainment.1.inline_category }}
 												</a>
 
 												<span class="f1-s-3 m-rl-3">
@@ -135,7 +106,7 @@
 												</span>
 
 												<span class="f1-s-3">
-													Feb 18
+													{{ entertainment.1.created_at }}
 												</span>
 											</span>
 										</div>
@@ -144,19 +115,19 @@
 									<!-- Item post -->
 									<div class="m-b-30">
 										<a href="blog-detail-02.html" class="wrap-pic-w hov1 trans-03">
-											<img src="{% static 'front/images/post-23.jpg' %}" alt="IMG">
+											<img src="{{ entertainment.2.photo.url }}" alt="IMG">
 										</a>
 
 										<div class="p-t-10">
 											<h5 class="p-b-5">
 												<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-													Donec metus orci, malesuada et lectus vitae
+													{{ entertainment.2.title }}
 												</a>
 											</h5>
 
 											<span class="cl8">
 												<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-													Game
+													{{ entertainment.2.inline_category }}
 												</a>
 
 												<span class="f1-s-3 m-rl-3">
@@ -164,7 +135,7 @@
 												</span>
 
 												<span class="f1-s-3">
-													Feb 16
+													{{ entertainment.2.created_at }}
 												</span>
 											</span>
 										</div>
@@ -186,19 +157,19 @@
 									<!-- Item post -->
 									<div class="m-b-30">
 										<a href="blog-detail-02.html" class="wrap-pic-w hov1 trans-03">
-											<img src="{% static 'front/images/post-10.jpg' %}" alt="IMG">
+											<img src="{{ business.0.photo.url }}" alt="IMG">
 										</a>
 
 										<div class="p-t-25">
 											<h5 class="p-b-5">
 												<a href="blog-detail-02.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-													Bitcoin lorem ipsum dolor sit amet consectetur
+													{{ business.0.title }}
 												</a>
 											</h5>
 
 											<span class="cl8">
 												<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-													Finance
+													{{ business.0.inline_category }}
 												</a>
 
 												<span class="f1-s-3 m-rl-3">
@@ -206,12 +177,12 @@
 												</span>
 
 												<span class="f1-s-3">
-													Feb 18
+													{{ business.0.created_at }}
 												</span>
 											</span>
 
 											<p class="f1-s-1 cl6 p-t-18">
-												Duis eu felis id tortor congue consequat. Sed vitae vestibulum enim, et pharetra magna
+												{{ business.0.description }}
 											</p>
 										</div>
 									</div>
@@ -221,19 +192,19 @@
 									<!-- Item post -->
 									<div class="m-b-30">
 										<a href="blog-detail-02.html" class="wrap-pic-w hov1 trans-03">
-											<img src="{% static 'front/images/post-11.jpg' %}" alt="IMG">
+											<img src="{{ business.1.photo.url }}" alt="IMG">
 										</a>
 
 										<div class="p-t-10">
 											<h5 class="p-b-5">
 												<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-													Donec metus orci, malesuada et lectus vitae
+													{{ business.1.title }}
 												</a>
 											</h5>
 
 											<span class="cl8">
 												<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-													Small Business
+													{{ business.1.inline_category }}
 												</a>
 
 												<span class="f1-s-3 m-rl-3">
@@ -241,7 +212,7 @@
 												</span>
 
 												<span class="f1-s-3">
-													Feb 17
+													{{ business.1.created_at }}
 												</span>
 											</span>
 										</div>
@@ -250,19 +221,19 @@
 									<!-- Item post -->
 									<div class="m-b-30">
 										<a href="blog-detail-02.html" class="wrap-pic-w hov1 trans-03">
-											<img src="{% static 'front/images/post-24.jpg' %}" alt="IMG">
+											<img src="{{ business.2.photo.url }}" alt="IMG">
 										</a>
 
 										<div class="p-t-10">
 											<h5 class="p-b-5">
 												<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-													Donec metus orci, malesuada et lectus vitae
+													{{ business.2.title }}
 												</a>
 											</h5>
 
 											<span class="cl8">
 												<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-													Economy
+													{{ business.2.inline_category }}
 												</a>
 
 												<span class="f1-s-3 m-rl-3">
@@ -270,7 +241,7 @@
 												</span>
 
 												<span class="f1-s-3">
-													Feb 16
+													{{ business.2.created_at }}
 												</span>
 											</span>
 										</div>
